@@ -2,7 +2,7 @@
 
 //Items
 item.MagnanimousSword.name=Magnanimous Sword
-item.MagnanimousPick.name=Magnanimous Pick
+item.MagnanimousPick.name=Magnanimous Pickaxe
 item.MagnanimousAxe.name=Magnanimous Axe
 item.MagnanimousHatchet.name=Magnanimous Hatchet
 item.MagnanimousHammer.name=Magnanimous Hammer
@@ -38,7 +38,7 @@ phrase.magtools.earthmoverinfo=Digs in 3x3 area
 
 
 //ToolHead Info
-phrase.magtools.handleinfo=Weilded by Heroes
+phrase.magtools.handleinfo=Wielded by Heroes
 phrase.magtools.handleinfo2=Combine with tool head in the anvil
 phrase.magtools.hammerheadinfo=Head of the Magnanimous Hammer
 phrase.magtools.axeheadinfo=Head of the Magnanimous Axe
