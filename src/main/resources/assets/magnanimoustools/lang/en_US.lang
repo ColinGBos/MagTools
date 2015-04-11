@@ -38,7 +38,7 @@ phrase.magtools.earthmoverinfo=Digs in 3x3 area
 
 
 //ToolHead Info
-phrase.magtools.handleinfo=Welded by Heroes
+phrase.magtools.handleinfo=Wielded by Heroes
 phrase.magtools.handleinfo2=Combine with tool head in the anvil
 phrase.magtools.hammerheadinfo=Head of the Magnanimous Hammer
 phrase.magtools.axeheadinfo=Head of the Magnanimous Axe
@@ -47,6 +47,6 @@ phrase.magtools.earthmoverheadinfo=Head of the Magnanimous Earth Mover
 phrase.magtools.swordbladeinfo=Blade of the Magnanimous Sword
 phrase.magtools.pickheadinfo=Head of the Magnanimous Pick
 phrase.magtools.geminfo=Gem beyond all else
-phrase.magtools.magstickinfo=Not your average stick ;)
+phrase.magtools.magstickinfo=Not your average stick
 
 phrase.holdshift=Hold Shift
