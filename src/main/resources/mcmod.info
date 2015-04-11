@@ -1,0 +1,21 @@
+[
+{
+  "modid": "magnanimoustools",
+  "name": "Magnanimous Tools",
+  "description": "High tier tools obtained through natural explorative means, with an experienced twist",
+  "version": "1.7.10-0.1.1a",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authors": [
+    "vapourdrive"
+  ],
+  "credits": "VapourDrive",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]

@@ -1,0 +1,52 @@
+//English language file for Magnanimous Tools
+
+//Items
+item.MagnanimousSword.name=Magnanimous Sword
+item.MagnanimousPick.name=Magnanimous Pick
+item.MagnanimousAxe.name=Magnanimous Axe
+item.MagnanimousHatchet.name=Magnanimous Hatchet
+item.MagnanimousHammer.name=Magnanimous Hammer
+item.MagnanimousShovel.name=Magnanimous Shovel
+item.MagnanimousEarthMover.name=Magnanimous Earth Mover
+item.MagnanimousSapling.name=Magnanimous Sapling
+item.MagnanimousGem.name=Magnanimous Gem
+item.HardenedHandle.name=Hardened Handle
+
+item.MagSwordBlade.name=Magnanimous Sword Blade
+item.MagPickHead.name=Magnanimous Pickaxe Head
+item.MagHammerHead.name=Magnanimous Hammer Head
+item.MagShovelHead.name=Magnanimous Shovel Head
+item.MagAxeHead.name=Magnanimous Axe Head
+item.MagHatchetHead.name=Magnanimous Hatchet Head
+item.MagHoeHead.name=Magnanimous Hoe Head
+item.MagEarthMoverHead.name=Magnanimous Earth Mover Head
+item.MagStick.name=Magnanimous Stick
+
+//Blocks
+tile.MagLog.name=Magnaninous Log
+tile.MagLeaves.name=Magnanimous Leaf
+
+//Phrases
+
+//Context - "Does 10 Experience Damage"
+phrase.magtools.does=Does
+phrase.magtools.xpdamage=Experience Damage
+
+//ToolInfo
+phrase.magtools.hammerinfo=Mines in 3x3 area
+phrase.magtools.earthmoverinfo=Digs in 3x3 area
+
+
+//ToolHead Info
+phrase.magtools.handleinfo=Weilded by Heroes
+phrase.magtools.handleinfo2=Combine with tool head in the anvil
+phrase.magtools.hammerheadinfo=Head of the Magnanimous Hammer
+phrase.magtools.axeheadinfo=Head of the Magnanimous Axe
+phrase.magtools.shovelheadinfo=Head of the Magnanimous Shovel
+phrase.magtools.earthmoverheadinfo=Head of the Magnanimous Earth Mover
+phrase.magtools.swordbladeinfo=Blade of the Magnanimous Sword
+phrase.magtools.pickheadinfo=Head of the Magnanimous Pick
+phrase.magtools.geminfo=Gem beyond all else
+phrase.magtools.magstickinfo=Not your average stick
+
+phrase.holdshift=Hold Shift
