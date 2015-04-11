@@ -1,3 +1,55 @@
+//Deutsche Sprachdatei für Großzügige Werkzeuge
+
+//Gegenstände
+item.MagnanimousSword.name=Großzügiges Schwert
+item.MagnanimousPick.name=Großzügige Spitzhacke
+item.MagnanimousAxe.name=Großzügige Axt
+item.MagnanimousHatchet.name=Großzügiges Beil
+item.MagnanimousHammer.name=Großzügiger Hammer
+item.MagnanimousShovel.name=Großzügige Schaufel
+item.MagnanimousEarthMover.name=Großzügiger Erdbeweger
+item.MagnanimousSapling.name=Großzügiger Setzling
+item.MagnanimousGem.name=Großzügiger Edelstein
+item.HardenedHandle.name=Großzügiger Schaft
+
+item.MagSwordBlade.name=Großzügige Schwertklinge
+item.MagPickHead.name=Großzügiger Spitzhackenkopf
+item.MagHammerHead.name=Großzügiger Hammerkopf
+item.MagShovelHead.name=Großzügiger Schaufelkopf
+item.MagAxeHead.name=Großzügiger Axtkopf
+item.MagHatchetHead.name=Großzügiger Beilkopf
+item.MagHoeHead.name=Großzügiger Hackenkopf
+item.MagEarthMoverHead.name=Großzügiger Erdbewegerkopf
+item.MagStick.name=Großzügiger Stock
+
+//Blöcke
+tile.MagLog.name=Großzügiger Baumstamm
+tile.MagLeaves.name=Großzügiges Blatt
+
+//Sätze
+
+//Kontext - "Verursacht 10 Erfahrungsschaden"
+phrase.magtools.does=Verursacht
+phrase.magtools.xpdamage=Erfahrungsschaden
+
+//WerkzeugInfo
+phrase.magtools.hammerinfo=Baut 3x3 Fläche ab
+phrase.magtools.earthmoverinfo=Schaufelt 3x3 Fläche ab
+
+
+//WerkzeugKopf Info
+phrase.magtools.handleinfo=Geführt von Helden
+phrase.magtools.handleinfo2=Kombinier mit Werkzeugkopf in Amboss
+phrase.magtools.hammerheadinfo=Kopf des Großzügigen Hammer
+phrase.magtools.axeheadinfo=Kopf der Großzügigen Axt
+phrase.magtools.shovelheadinfo=Kopf der Großzügigen Schaufel
+phrase.magtools.earthmoverheadinfo=Kopf des Großzügigen Erdbewegers
+phrase.magtools.swordbladeinfo=Klinge des Großzügigen Schwertes
+phrase.magtools.pickheadinfo=Kopf der Großzügigen Spitzhacke
+phrase.magtools.geminfo=Edelstein über Allen
+phrase.magtools.magstickinfo=Nicht dein durschnittlicher Stock
+
+phrase.holdshift=Halte Shift
 
 
 
