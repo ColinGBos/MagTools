@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 
+import com.vapourdrive.magtools.config.ConfigHandler;
 import com.vapourdrive.magtools.anvilhandler.AnvilManager;
 import com.vapourdrive.magtools.blocks.MagBlocks;
 import com.vapourdrive.magtools.creativetabs.MagCreativeTab;
@@ -44,6 +45,7 @@ public class MagTools
     @EventHandler
     public void Init(FMLInitializationEvent event)
     {
+		ConfigHandler.init(ConfigPath);
     	MagItems.init();
     	MagBlocks.init();
     	new MagWorld();
