@@ -1,0 +1,52 @@
+//Norsk språkfil for Magnan Verktøy
+
+//Elementer
+item.MagnanimousSword.name=Magnan Sverd
+item.MagnanimousPick.name=Magnan Hakke
+item.MagnanimousAxe.name=Magnan Øks
+item.MagnanimousHatchet.name=Magnan Øks
+item.MagnanimousHammer.name=Magnan Hammer
+item.MagnanimousShovel.name=Magnan Spade
+item.MagnanimousEarthMover.name=Magnan Jordflytter
+item.MagnanimousSapling.name=Magnan Sapling
+item.MagnanimousGem.name=Magnan Juvel
+item.HardenedHandle.name=Herdet Håndtak
+
+item.MagSwordBlade.name=Magnan Sverdblad
+item.MagPickHead.name=Magnan Hakkehode
+item.MagHammerHead.name=Magnan Hammerhode
+item.MagShovelHead.name=Magnan Spadehode
+item.MagAxeHead.name=Magnan Øksehode
+item.MagHatchetHead.name=Magnan Øksehode
+item.MagHoeHead.name=Magnan Ugresshakkehode
+item.MagEarthMoverHead.name=Magnan Jordflytterhode
+item.MagStick.name=Magnan Pinne
+
+//Blokker
+tile.MagLog.name=Magnan Tre
+tile.MagLeaves.name=Magnan Blad
+
+//Setninger
+
+//Kontekst - "Skader 10 av erfaringspoengene"
+phrase.magtools.does=Gjør
+phrase.magtools.xpdamage=Erfaringsskade
+
+//Verktøyinfo
+phrase.magtools.hammerinfo=Hakker i et 3x3 område
+phrase.magtools.earthmoverinfo=Graver i et 3x3 område
+
+
+//Verktøyhodeinfo
+phrase.magtools.handleinfo=Sveiset av helter
+phrase.magtools.handleinfo2=Kombiner med et verktøyhode i en ambolt
+phrase.magtools.hammerheadinfo=Hodet til Magnan Hammer
+phrase.magtools.axeheadinfo=Hodet til Magnan Øks
+phrase.magtools.shovelheadinfo=Hodet til Magnan Spaden
+phrase.magtools.earthmoverheadinfo=Hodet til Magnan Jordflytteren
+phrase.magtools.swordbladeinfo=Hodet til Magnan Sverdet
+phrase.magtools.pickheadinfo=Hodet til Magnan Hakken
+phrase.magtools.geminfo=Juvel bak alt annet
+phrase.magtools.magstickinfo=Ikke en vanlig pinne
+
+phrase.holdshift=Hold Shift
