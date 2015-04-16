@@ -27,33 +27,35 @@ public class MagTools
 {
 	@Instance(Reference.ModID)
 	public static MagTools Instance;
-	
+
 	@SidedProxy(clientSide = "com.vapourdrive.magtools.proxies.ClientProxy", serverSide = "com.vapourdrive.magtools.proxies.CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	public static CreativeTabs MagCreativeTab;
 	public static String ConfigPath;
-	
+
 	public static final Logger log = LogManager.getLogger(Reference.ModID);
-	
-    @EventHandler
-    public void PreInit(FMLPreInitializationEvent event)
-    {
-    	ConfigPath = event.getModConfigurationDirectory() + "/magtools/";
-    	MagCreativeTab = new MagCreativeTab(CreativeTabs.getNextID(), "MagCreativeTab");
-    }
-    @EventHandler
-    public void Init(FMLInitializationEvent event)
-    {
+
+	@EventHandler
+	public void PreInit(FMLPreInitializationEvent event)
+	{
+		ConfigPath = event.getModConfigurationDirectory() + "/magtools/";
+		MagCreativeTab = new MagCreativeTab(CreativeTabs.getNextID(), "MagCreativeTab");
+	}
+
+	@EventHandler
+	public void Init(FMLInitializationEvent event)
+	{
 		ConfigHandler.init(ConfigPath);
-    	MagItems.init();
-    	MagBlocks.init();
-    	new MagWorld();
-    	MagEvents.init();
-    	new AnvilManager();
-    }
-    @EventHandler
-    public void iPostInit(FMLPostInitializationEvent event)
-    {
-    }
+		MagItems.init();
+		MagBlocks.init();
+		new MagWorld();
+		MagEvents.init();
+		new AnvilManager();
+	}
+
+	@EventHandler
+	public void iPostInit(FMLPostInitializationEvent event)
+	{
+	}
 }

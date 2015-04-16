@@ -15,7 +15,7 @@ public class MagCreativeTab extends CreativeTabs
 	{
 		super(id, lable);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getTabLabel()

@@ -24,17 +24,17 @@ public class MagAnvilEvent
 		}
 
 		ItemStack Output = AnvilManager.getInstance().getValidRecipe(leftInput, rightInput);
-		
-		if(Output != null)
+
+		if (Output != null)
 		{
 			xpCost = AnvilManager.getInstance().getCost(leftInput, rightInput);
 			matCost = AnvilManager.getInstance().getMatCost(leftInput, rightInput);
-			
-			if(xpCost <= 0)
+
+			if (xpCost <= 0)
 			{
 				xpCost = 1;
 			}
-			
+
 			event.materialCost = matCost;
 			event.cost = xpCost;
 			event.output = Output;

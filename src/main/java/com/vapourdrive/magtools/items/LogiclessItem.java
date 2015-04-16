@@ -40,17 +40,17 @@ public class LogiclessItem extends Item
 	{
 		itemIcon = register.registerIcon(Reference.ResourcePath + name);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean advancedInfo)
 	{
-		if(phrase != null)
+		if (phrase != null)
 		{
 			list.add(StatCollector.translateToLocal(phrase));
 		}
-		if(phrase2 != null)
+		if (phrase2 != null)
 		{
-			if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
+			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 			{
 				list.add(StatCollector.translateToLocal(phrase2));
 			}

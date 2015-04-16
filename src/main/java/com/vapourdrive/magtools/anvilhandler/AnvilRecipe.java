@@ -12,7 +12,7 @@ public class AnvilRecipe implements IAnvilRecipe
 	public final ItemStack resultItem;
 	public final int cost;
 	public final int matCost;
-	
+
 	public AnvilRecipe(ItemStack left, ItemStack right, int MatCost, ItemStack result, int xpCost)
 	{
 		this.leftItem = left;
@@ -27,9 +27,9 @@ public class AnvilRecipe implements IAnvilRecipe
 	{
 		ItemStack Left = this.leftItem;
 		ItemStack Right = this.rightItem;
-		if(left != null && right != null)
+		if (left != null && right != null)
 		{
-			if(Left == left && Right == right)
+			if (Left == left && Right == right)
 			{
 				return true;
 			}
@@ -54,21 +54,21 @@ public class AnvilRecipe implements IAnvilRecipe
 	{
 		return this.rightItem;
 	}
-	
+
 	public boolean hasOutput(ItemStack tool)
 	{
 		List<IAnvilRecipe> recipes = AnvilManager.getInstance().getRecipeList();
-		
+
 		Iterator<IAnvilRecipe> iterator = recipes.iterator();
-		
-		while(iterator.hasNext())
+
+		while (iterator.hasNext())
 		{
 			IAnvilRecipe recipe = iterator.next();
 			ItemStack Result = recipe.getResult();
-			
-			if(Result != null)
+
+			if (Result != null)
 			{
-				if(Result.getItem() == tool.getItem())
+				if (Result.getItem() == tool.getItem())
 				{
 					return true;
 				}
@@ -88,5 +88,5 @@ public class AnvilRecipe implements IAnvilRecipe
 	{
 		return this.matCost;
 	}
-	
+
 }

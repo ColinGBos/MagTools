@@ -1,5 +1,6 @@
 package com.vapourdrive.magtools.items.tools;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -20,6 +21,7 @@ import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
 import com.vapourdrive.magtools.MagTools;
 import com.vapourdrive.magtools.Reference;
+import com.vapourdrive.magtools.config.ConfigInfo;
 import com.vapourdrive.magtools.items.MagItemRef;
 import com.vapourdrive.magtools.utils.RandomUtils;
 
@@ -34,6 +36,10 @@ public class MagEarthMover extends ItemSpade
 		super(material);
 		this.setUnlocalizedName(MagItemRef.MagEarthMover);
 		this.setCreativeTab(MagTools.MagCreativeTab);
+		if (ConfigInfo.MagEarthMoverDurability != ConfigInfo.MagDamage)
+		{
+			this.setMaxDamage(ConfigInfo.MagEarthMoverDurability);
+		}
 	}
 
 	@Override
@@ -48,6 +54,11 @@ public class MagEarthMover extends ItemSpade
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean useExtraInformation)
 	{
 		list.add(EnumChatFormatting.GREEN + StatCollector.translateToLocal("phrase.magtools.earthmoverinfo"));
+		float Bonus = ((float) player.experienceLevel) / 75;
+		if (ConfigInfo.EnableXPSpeed)
+		{
+			list.add(EnumChatFormatting.GREEN + "Goes " + (new DecimalFormat("#.##").format(1.0F + Bonus)) + " Times Faster");
+		}
 	}
 
 	@Override
@@ -88,7 +99,8 @@ public class MagEarthMover extends ItemSpade
 
 		float strength = ForgeHooks.blockStrength(block, player, world, x, y, z);
 
-		if (player.isSneaking() && (player.experienceLevel >= 20 || player.capabilities.isCreativeMode))
+		if (player.isSneaking() && ConfigInfo.EnableEarthMoverShiftOneBlock
+				&& (player.experienceLevel >= 20 || player.capabilities.isCreativeMode))
 		{
 			checkBlockBreak(world, player, x, y, z, stack, strength, block, side);
 		}

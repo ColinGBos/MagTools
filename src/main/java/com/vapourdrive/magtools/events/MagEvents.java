@@ -2,7 +2,6 @@ package com.vapourdrive.magtools.events;
 
 import net.minecraftforge.common.MinecraftForge;
 
-
 public class MagEvents
 {
 	public static void init()

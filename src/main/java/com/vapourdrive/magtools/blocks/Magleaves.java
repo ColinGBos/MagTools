@@ -22,9 +22,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class Magleaves extends BlockLeaves implements IShearable
 {
-    public IIcon FancyLeaves;
-    public IIcon FastLeaves;
-    public static final String[] field_150133_O = new String[] {"magleaves"};
+	public IIcon FancyLeaves;
+	public IIcon FastLeaves;
+	public static final String[] field_150133_O = new String[]
+	{
+		"magleaves"
+	};
 
 	public Magleaves()
 	{
@@ -37,12 +40,12 @@ public class Magleaves extends BlockLeaves implements IShearable
 		this.setStepSound(soundTypeGrass);
 	}
 
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister register)
-    {
-        FancyLeaves = register.registerIcon(Reference.ResourcePath + "MagLeaves");
-        FastLeaves = register.registerIcon(Reference.ResourcePath + "MagLeaves_fast");
-    }
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister register)
+	{
+		FancyLeaves = register.registerIcon(Reference.ResourcePath + "MagLeaves");
+		FastLeaves = register.registerIcon(Reference.ResourcePath + "MagLeaves_fast");
+	}
 
 	@Override
 	public Item getItemDropped(int metadata, Random random, int fortune)
@@ -92,31 +95,31 @@ public class Magleaves extends BlockLeaves implements IShearable
 		return ret;
 	}
 
-    public String[] func_150125_e()
-    {
-        return field_150133_O;
-    }
+	public String[] func_150125_e()
+	{
+		return field_150133_O;
+	}
 
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-    {
-        if (Minecraft.getMinecraft().gameSettings.fancyGraphics)
-        {
-        	return this.FancyLeaves;
-        }
-        return this.FastLeaves;
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess acces, int x, int y, int z, int meta)
-    {
-    	return true;
-    }
-    
-    @Override
-    public boolean isOpaqueCube()
-    {
-    	return false;
-    }
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+	{
+		if (Minecraft.getMinecraft().gameSettings.fancyGraphics)
+		{
+			return this.FancyLeaves;
+		}
+		return this.FastLeaves;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockAccess acces, int x, int y, int z, int meta)
+	{
+		return true;
+	}
+
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
 
 }

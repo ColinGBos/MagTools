@@ -81,13 +81,13 @@ public class MagSapling extends BlockSapling
 		{
 			return;
 		}
-		
+
 		int meta = world.getBlockMetadata(x, y, z);
-		
+
 		final WorldGenerator treeGen = new WorldGenMagTree(true);
-		
+
 		world.setBlock(x, y, z, Blocks.air, 0, 4);
-		
+
 		if (!treeGen.generate(world, rand, x, y, z))
 		{
 			world.setBlock(x, y, z, this, meta, 4);

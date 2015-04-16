@@ -5,6 +5,7 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 
+import com.vapourdrive.magtools.config.ConfigInfo;
 import com.vapourdrive.magtools.items.tools.MagEarthMover;
 import com.vapourdrive.magtools.items.tools.MagHammer;
 import com.vapourdrive.magtools.items.tools.MagHatchet;
@@ -21,7 +22,7 @@ public class MagItems
 	public static Item MagSword;
 	public static Item MagHammer;
 	public static Item MagEarthMover;
-	
+
 	public static Item MagHandle;
 	public static Item MagStick;
 	public static Item MagHammerHead;
@@ -31,9 +32,10 @@ public class MagItems
 	public static Item MagHatchetHead;
 	public static Item MagGem;
 	public static Item MagEarthMoverHead;
-	
-	public static ToolMaterial Magnanimous = EnumHelper.addToolMaterial("Magnanimous", 3, 2000, 8.0F, 3.5F, 20);
-	
+
+	public static ToolMaterial Magnanimous = EnumHelper.addToolMaterial("Magnanimous", ConfigInfo.MagMiningLevel, ConfigInfo.MagDurability,
+			ConfigInfo.MagEfficiency, ConfigInfo.MagDamage, ConfigInfo.MagEnchantability);
+
 	public static void init()
 	{
 		MagPick = new MagPick(Magnanimous);
@@ -41,7 +43,7 @@ public class MagItems
 		MagHammer = new MagHammer(Magnanimous);
 		MagHatchet = new MagHatchet(Magnanimous);
 		MagEarthMover = new MagEarthMover(Magnanimous);
-		
+
 		MagHandle = new LogiclessItem(MagItemRef.HardenedHandle, "phrase.magtools.handleinfo", "phrase.magtools.handleinfo2", 64);
 		MagStick = new LogiclessItem(MagItemRef.MagStick, "phrase.magtools.magstickinfo", null, 64);
 		MagHammerHead = new LogiclessItem(MagItemRef.MagHammerHead, "phrase.magtools.hammerheadinfo", null, 1);
@@ -50,36 +52,53 @@ public class MagItems
 		MagBlade = new LogiclessItem(MagItemRef.MagSwordBlade, "phrase.magtools.swordbladeinfo", null, 1);
 		MagGem = new LogiclessItem(MagItemRef.MagGem, "phrase.magtools.geminfo", null, 16);
 		MagEarthMoverHead = new LogiclessItem(MagItemRef.MagEarthMoverHead, "phrase.magtools.earthmoverheadinfo", null, 1);
-		
+
 		GameRegistry.registerItem(MagSword, MagItemRef.MagSwordName);
 		GameRegistry.registerItem(MagPick, MagItemRef.MagPickName);
 		GameRegistry.registerItem(MagHammer, MagItemRef.MagHammerName);
-		//GameRegistry.registerItem(MagHatchet, MagItemRef.MagHatchetName);
+		// GameRegistry.registerItem(MagHatchet, MagItemRef.MagHatchetName);
 		GameRegistry.registerItem(MagEarthMover, MagItemRef.MagEarthMover);
-		
+
 		GameRegistry.registerItem(MagHandle, MagItemRef.HardenedHandle);
 		GameRegistry.registerItem(MagEarthMoverHead, MagItemRef.MagEarthMoverHead);
 		GameRegistry.registerItem(MagHammerHead, MagItemRef.MagHammerHead);
-		//GameRegistry.registerItem(MagAxeHead, MagItemRef.MagAxeHead);
+		// GameRegistry.registerItem(MagAxeHead, MagItemRef.MagAxeHead);
 		GameRegistry.registerItem(MagPickHead, MagItemRef.MagPickHead);
 		GameRegistry.registerItem(MagBlade, MagItemRef.MagSwordBlade);
 		GameRegistry.registerItem(MagGem, MagItemRef.MagGem);
 		GameRegistry.registerItem(MagStick, MagItemRef.MagStick);
-		
+
 		registerRecipes();
-		
+
 	}
 
 	private static void registerRecipes()
 	{
-		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagAxeHead), new Object[] {"## ", "###", "## ", '#', MagItems.MagGem});
-		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagBlade), new Object[] {" ##", "###", "## ", '#', MagItems.MagGem});
-		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagHammerHead), new Object[] {"# #", "###", "# #", '#', MagItems.MagGem});
-		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagEarthMoverHead), new Object[] {" # ", "###", "###", '#', MagItems.MagGem});
-		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagPickHead), new Object[] {" # ", "# #", '#', MagItems.MagGem});
+		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagAxeHead), new Object[]
+		{
+				"## ", "###", "## ", '#', MagItems.MagGem
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagBlade), new Object[]
+		{
+				" ##", "###", "## ", '#', MagItems.MagGem
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagHammerHead), new Object[]
+		{
+				"# #", "###", "# #", '#', MagItems.MagGem
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagEarthMoverHead), new Object[]
+		{
+				" # ", "###", "###", '#', MagItems.MagGem
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagPickHead), new Object[]
+		{
+				" # ", "# #", '#', MagItems.MagGem
+		});
 
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagHandle), new Object[] {"  #", " # ", "#  ", '#', MagItems.MagStick});
+		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagHandle), new Object[]
+		{
+				"  #", " # ", "#  ", '#', MagItems.MagStick
+		});
 	}
 
 }

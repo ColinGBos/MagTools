@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 
 import com.vapourdrive.magtools.MagTools;
 import com.vapourdrive.magtools.Reference;
+import com.vapourdrive.magtools.config.ConfigInfo;
 import com.vapourdrive.magtools.items.MagItemRef;
 
 import cpw.mods.fml.relauncher.Side;
@@ -28,6 +29,10 @@ public class MagPick extends ItemPickaxe
 		super(material);
 		this.setUnlocalizedName(MagItemRef.MagPickName);
 		this.setCreativeTab(MagTools.MagCreativeTab);
+		if (ConfigInfo.MagPickDurability != ConfigInfo.MagDamage)
+		{
+			this.setMaxDamage(ConfigInfo.MagPickDurability);
+		}
 	}
 
 	@Override
@@ -42,13 +47,20 @@ public class MagPick extends ItemPickaxe
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean useExtraInformation)
 	{
 		float Bonus = ((float) player.experienceLevel) / 75;
-		list.add(EnumChatFormatting.GREEN + "Goes " + (new DecimalFormat("#.##").format(1.0F + Bonus)) + " Times Faster");
-		int fortune = (player.experienceLevel / 25);
-		if (fortune > 10)
+		if (ConfigInfo.EnableXPSpeed)
 		{
-			fortune = 10;
+			list.add(EnumChatFormatting.GREEN + "Goes " + (new DecimalFormat("#.##").format(1.0F + Bonus)) + " Times Faster");
 		}
-		list.add(EnumChatFormatting.GREEN + "Has Level " + fortune + " Drop Bonus");
+
+		if (ConfigInfo.EnablePickFortune)
+		{
+			int fortune = (player.experienceLevel / 25);
+			if (fortune > 10)
+			{
+				fortune = 10;
+			}
+			list.add(EnumChatFormatting.GREEN + "Has Level " + fortune + " Drop Bonus");
+		}
 	}
 
 	@Override
@@ -72,7 +84,7 @@ public class MagPick extends ItemPickaxe
 			stack.damageItem(1, entity);
 		}
 
-		if (!world.isRemote && fortune >= 0 && EnchantmentHelper.getSilkTouchModifier(entity) == false)
+		if (!world.isRemote && fortune >= 0 && EnchantmentHelper.getSilkTouchModifier(entity) == false && ConfigInfo.EnablePickFortune)
 		{
 			if ((world.rand.nextFloat() + 0.2F * fortune) > 0.6)
 			{
