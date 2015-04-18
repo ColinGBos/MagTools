@@ -41,14 +41,15 @@ public class MagTools
 	{
 		ConfigPath = event.getModConfigurationDirectory() + "/magtools/";
 		MagCreativeTab = new MagCreativeTab(CreativeTabs.getNextID(), "MagCreativeTab");
+		ConfigHandler.init(ConfigPath);
+		MagItems.init();
+		MagBlocks.init();
 	}
 
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
-		ConfigHandler.init(ConfigPath);
-		MagItems.init();
-		MagBlocks.init();
+		MagItems.registerRecipes();
 		new MagWorld();
 		MagEvents.init();
 		new AnvilManager();

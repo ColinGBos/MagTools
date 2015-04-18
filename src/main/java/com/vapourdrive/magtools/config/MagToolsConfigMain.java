@@ -17,6 +17,7 @@ public class MagToolsConfigMain
 	private static final String OverrideDurability = "Override Durability";
 	private static final String SpecialAbilitiesEnablement = "Special Tool Features Enablement";
 	private static final String SpecialAbilitiesSettings = "Special Tool Feature Settings";
+	private static final String ToolEnabling = "Enable Tools";
 
 	private static final String WorldGen = "World Settings";
 
@@ -59,6 +60,12 @@ public class MagToolsConfigMain
 				true, "This enables the damage boost the sword gets from your XPLevels");
 		ConfigInfo.EnablePickFortune = config.getBoolean("Pick Custom Fortune Enabling", ToolConfigs + "." + SpecialAbilitiesEnablement,
 				true, "This enables the XP based extra drop chance");
+		
+		ConfigInfo.EnableSword = config.getBoolean("Enable Mag Sword", ToolConfigs + "." + ToolEnabling, true, "If the Mag Sword is enabled");
+		ConfigInfo.EnablePick = config.getBoolean("Enable Mag Pick", ToolConfigs + "." + ToolEnabling, true, "If the Mag Pick is enabled");
+		ConfigInfo.EnableHammer = config.getBoolean("Enable Mag Hammer", ToolConfigs + "." + ToolEnabling, true, "If the Mag Hammer is enabled");
+		ConfigInfo.EnableEarthMover = config.getBoolean("Enable Mag EarthMover", ToolConfigs + "." + ToolEnabling, true, "If the Mag EarthMover is enabled");
+
 
 		ConfigInfo.EarthMoverSneakMinXP = config.getInt("EarthMover SneakMine XP Requirement",
 				ToolConfigs + "." + SpecialAbilitiesSettings, ConfigInfo.EarthMoverSneakMinXP, 0, 200,

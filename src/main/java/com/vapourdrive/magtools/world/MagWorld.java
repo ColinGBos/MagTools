@@ -21,7 +21,7 @@ public class MagWorld implements IWorldGenerator
 	{
 		GameRegistry.registerWorldGenerator(this, 0);
 
-		MagTreeGenerator = new WorldGenMagTree(false);
+		MagTreeGenerator = new WorldGenMagTree(false, true);
 	}
 
 	@Override

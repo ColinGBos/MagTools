@@ -16,7 +16,7 @@ public class MagBlocks
 		MagLeaves = new Magleaves();
 
 		GameRegistry.registerBlock(MagLog, MagBlockRef.MagTreeLog);
-		// GameRegistry.registerBlock(MagSapling, MagBlockRef.MagSapling);
+		GameRegistry.registerBlock(MagSapling, MagBlockRef.MagSapling);
 		GameRegistry.registerBlock(MagLeaves, MagBlockRef.MagLeaves);
 	}
 

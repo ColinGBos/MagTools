@@ -26,8 +26,12 @@ public class ConfigInfo
 	public static int SneakXPMinDefault = 20;
 
 	public static boolean EnableXPSpeed;
-
 	public static boolean EnablePickFortune;
 	public static boolean EnableSwordXPdamage;
+	
+	public static boolean EnableSword;
+	public static boolean EnablePick;
+	public static boolean EnableHammer;
+	public static boolean EnableEarthMover;
 
 }

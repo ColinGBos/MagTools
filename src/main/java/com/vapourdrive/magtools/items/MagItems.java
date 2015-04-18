@@ -53,26 +53,41 @@ public class MagItems
 		MagGem = new LogiclessItem(MagItemRef.MagGem, "phrase.magtools.geminfo", null, 16);
 		MagEarthMoverHead = new LogiclessItem(MagItemRef.MagEarthMoverHead, "phrase.magtools.earthmoverheadinfo", null, 1);
 
-		GameRegistry.registerItem(MagSword, MagItemRef.MagSwordName);
-		GameRegistry.registerItem(MagPick, MagItemRef.MagPickName);
-		GameRegistry.registerItem(MagHammer, MagItemRef.MagHammerName);
+
+		registerItems();
+	}
+	
+	public static void registerItems()
+	{
+		if(ConfigInfo.EnableSword)
+		{
+			GameRegistry.registerItem(MagSword, MagItemRef.MagSwordName);
+			GameRegistry.registerItem(MagBlade, MagItemRef.MagSwordBlade);
+		}
+		if(ConfigInfo.EnablePick)
+		{
+			GameRegistry.registerItem(MagPick, MagItemRef.MagPickName);
+			GameRegistry.registerItem(MagPickHead, MagItemRef.MagPickHead);
+		}
+		if(ConfigInfo.EnableHammer)
+		{
+			GameRegistry.registerItem(MagHammer, MagItemRef.MagHammerName);
+			GameRegistry.registerItem(MagHammerHead, MagItemRef.MagHammerHead);
+		}
+		if(ConfigInfo.EnableEarthMover)
+		{
+			GameRegistry.registerItem(MagEarthMover, MagItemRef.MagEarthMover);
+			GameRegistry.registerItem(MagEarthMoverHead, MagItemRef.MagEarthMoverHead);
+		}
 		// GameRegistry.registerItem(MagHatchet, MagItemRef.MagHatchetName);
-		GameRegistry.registerItem(MagEarthMover, MagItemRef.MagEarthMover);
 
 		GameRegistry.registerItem(MagHandle, MagItemRef.HardenedHandle);
-		GameRegistry.registerItem(MagEarthMoverHead, MagItemRef.MagEarthMoverHead);
-		GameRegistry.registerItem(MagHammerHead, MagItemRef.MagHammerHead);
 		// GameRegistry.registerItem(MagAxeHead, MagItemRef.MagAxeHead);
-		GameRegistry.registerItem(MagPickHead, MagItemRef.MagPickHead);
-		GameRegistry.registerItem(MagBlade, MagItemRef.MagSwordBlade);
 		GameRegistry.registerItem(MagGem, MagItemRef.MagGem);
 		GameRegistry.registerItem(MagStick, MagItemRef.MagStick);
-
-		registerRecipes();
-
 	}
 
-	private static void registerRecipes()
+	public static void registerRecipes()
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(MagItems.MagAxeHead), new Object[]
 		{
