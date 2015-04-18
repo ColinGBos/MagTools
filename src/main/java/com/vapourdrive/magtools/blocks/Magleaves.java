@@ -61,11 +61,15 @@ public class Magleaves extends BlockLeaves implements IShearable
 			return;
 		}
 
-		if (world.rand.nextInt(40) == 0)
+		if (world.rand.nextInt(100) == 0)
 		{
 			Item item = this.getItemDropped(metadata, world.rand, fortune);
 
 			this.dropBlockAsItem(world, x, y, z, new ItemStack(item, 1, this.damageDropped(metadata)));
+		}
+		else if (world.rand.nextInt(1000) == 0)
+		{
+			this.dropBlockAsItem(world, x, y, z, new ItemStack(MagBlocks.MagSapling));
 		}
 	}
 

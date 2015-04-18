@@ -17,6 +17,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import com.vapourdrive.magtools.MagTools;
 import com.vapourdrive.magtools.Reference;
+import com.vapourdrive.magtools.config.ConfigInfo;
 import com.vapourdrive.magtools.world.feature.WorldGenMagTree;
 
 import cpw.mods.fml.relauncher.Side;
@@ -59,14 +60,18 @@ public class MagSapling extends BlockBush implements IGrowable
 	@Override	
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
+		if(random.nextInt(ConfigInfo.SaplingGrowthChanceNatural) == 0)
+		{
+			ageSapling(world, random, x, y, z);
+		}
+	}
+
+	public void growTree(World world, Random random, int x, int y, int z)
+	{
 		Object tree = new WorldGenMagTree(true, false);
 		if (!((WorldGenerator)tree).generate(world, random, x, y, z))
 		{
 			MagTools.log.log(Level.INFO, "Tree did not grow");
-		}
-		else
-		{
-			MagTools.log.log(Level.INFO, "Grow tree!");
 		}
 	}
 
@@ -76,25 +81,44 @@ public class MagSapling extends BlockBush implements IGrowable
 		return 0;
 	}
 
+	//is bonemeal consumed
 	@Override
-	public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
+	public boolean func_149851_a(World world, int x, int y, int z, boolean check)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
+	//can bonemeal activate
 	@Override
-	public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_)
+	public boolean func_149852_a(World world, Random random, int x, int y, int z)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
+	//what to do when bonemealed
 	@Override
-	public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_, int p_149853_5_)
+	public void func_149853_b(World world, Random random, int x, int y, int z)
 	{
-		// TODO Auto-generated method stub
+		if(ConfigInfo.CanBonemealSapling && random.nextInt(ConfigInfo.SaplingGrowthChanceBonemeal) == 0)
+		{
+			ageSapling(world, random, x, y, z);
+		}
+	}
 
+	public void ageSapling(World world, Random random, int x, int y, int z)
+	{
+		int meta = world.getBlockMetadata(x, y, z);
+		if (meta < 15)
+		{
+			meta++;
+		}
+		
+		world.setBlockMetadataWithNotify(x, y, z, meta, 3);
+		MagTools.log.log(Level.INFO, "Metadata: " + meta);
+		if (meta >= 15)
+		{
+			growTree(world, random, x, y, z);
+		}
 	}
 
 }

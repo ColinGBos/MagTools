@@ -33,5 +33,19 @@ public class ConfigInfo
 	public static boolean EnablePick;
 	public static boolean EnableHammer;
 	public static boolean EnableEarthMover;
+	
+	//WorldGen Options
+	public static boolean EnableSaplingGem;
+	public static boolean EnableTreeGen;
+	public static boolean EnableFlatWorldTree;
+	
+	public static int TreeGenChance;
+	public static int SaplingGemChance;
+	public static int SaplingTreeGemLogChance;
+	public static int WorldGenTreeGemLogChance;
+	
+	public static boolean CanBonemealSapling;
+	public static int SaplingGrowthChanceNatural;
+	public static int SaplingGrowthChanceBonemeal;
 
 }

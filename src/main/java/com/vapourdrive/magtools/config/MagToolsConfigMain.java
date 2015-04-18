@@ -20,6 +20,9 @@ public class MagToolsConfigMain
 	private static final String ToolEnabling = "Enable Tools";
 
 	private static final String WorldGen = "World Settings";
+	private static final String WorldGenEnabling = "Enable Worldgen";
+	private static final String TreeGenSettings = "TreeGen Settings";
+	private static final String SaplingSettings = "Tree settings";
 
 	public static void init(File mtconfig)
 	{
@@ -30,6 +33,47 @@ public class MagToolsConfigMain
 		config.setCategoryComment(WorldGen, "Here is where the world settings can be changed");
 		config.setCategoryComment(ToolConfigs, "Here is where all the tool settings can be changed");
 
+		toolOptions();
+		worldOptions();
+
+		config.save();
+	}
+
+	public static void worldOptions()
+	{
+		// Enabling options
+		ConfigInfo.EnableSaplingGem = config.getBoolean("Enable Sapling-Tree GemSpawning", WorldGen + "." + WorldGenEnabling, false,
+				"Enables a tree grown from a sapling to grow with gems in its core");
+		ConfigInfo.EnableTreeGen = config.getBoolean("Enable Tree Gen", WorldGen + "." + WorldGenEnabling, true,
+				"Enables the tree to generate in the world");
+		ConfigInfo.EnableFlatWorldTree = config.getBoolean("Enable FlatWorld Tree Gen", WorldGen + "." + WorldGenEnabling, false,
+				"Enables the tree to generate in a flat world type");
+
+		// World Gen tweaks
+		ConfigInfo.TreeGenChance = config.getInt("Tree Gen Chance", WorldGen + "." + TreeGenSettings, 50, 1, 1000,
+				"Chance 1/x that a tree will attempt to generate in a chunk. \n"
+						+ "The conditions are strick, so 1/50 may mean 1 tree per 500 chunks");
+		ConfigInfo.SaplingGemChance = config.getInt("Sapling GemTree Growth Chance", WorldGen + "." + TreeGenSettings, 3, 1, 1000,
+				"If saplings can grow trees with gems, there is a 1/x chance that the tree will have gems");
+		ConfigInfo.SaplingTreeGemLogChance = config.getInt("Sapling-Tree Gem-Log Chance", WorldGen + "." + TreeGenSettings, 4, 1, 20,
+				"The 1/x chance that a center log will have a gem in a sapling grown tree (if enabled)");
+		ConfigInfo.WorldGenTreeGemLogChance = config.getInt("WorldGen Tree Gem Chance", WorldGen + "." + TreeGenSettings, 4, 1, 20,
+				"The 1/x chance that a center log will have a gem in a worldgen tree");
+
+		// sapling settings
+		ConfigInfo.CanBonemealSapling = config.getBoolean("Enable Bonemeal Sapling", WorldGen + "." + SaplingSettings, false,
+				"Enables the sapling to grow via bonemealing");
+		ConfigInfo.SaplingGrowthChanceNatural = config.getInt("Natural Sapling Growth Chance", WorldGen + "." + SaplingSettings, 10, 1,
+				1000, "1/x chance that a sapling will age when it's block experiences an update naturally");
+		ConfigInfo.SaplingGrowthChanceBonemeal = config.getInt("Bonemealed Sapling Growth Chance", WorldGen + "." + SaplingSettings, 4, 1,
+				1000, "1/x chance that a sapling will age when it's block is bonemealed \n"
+						+ "The average number of bonemeal consumed per tree is this number * 15");
+
+	}
+
+	public static void toolOptions()
+	{
+		// Material Settings
 		ConfigInfo.MagDurability = config.getInt("Magnanimous Material Durability", ToolConfigs + "." + MaterialConfigs,
 				ConfigInfo.MagDurabilityDefault, 1, 100000, "Default base durability for the magnanimous material");
 		ConfigInfo.MagEnchantability = config.getInt("Magnanimous Material Enchantability", ToolConfigs + "." + MaterialConfigs,
@@ -41,6 +85,7 @@ public class MagToolsConfigMain
 		ConfigInfo.MagDamage = config.getFloat("Magnanimous Material Damage", ToolConfigs + "." + MaterialConfigs,
 				ConfigInfo.MagDamageDefault, 0.0F, 10.0F, "The damage worth that these tools will have against mobs");
 
+		// Durability Overrides
 		ConfigInfo.MagPickDurability = config.getInt("Magnanimous Pick Durability", ToolConfigs + "." + OverrideDurability,
 				ConfigInfo.MagDurabilityDefault, 1, 100000, "Set specific durability for the Pick");
 		ConfigInfo.MagHammerDurability = config.getInt("Magnanimous Hammer Durability", ToolConfigs + "." + OverrideDurability,
@@ -50,6 +95,7 @@ public class MagToolsConfigMain
 		ConfigInfo.MagSwordDurability = config.getInt("Magnanimous Sword Durability", ToolConfigs + "." + OverrideDurability,
 				ConfigInfo.MagDurabilityDefault, 1, 100000, "Set specific durability for the Sword");
 
+		// Special Feature Enabling
 		ConfigInfo.EnableEarthMoverShiftOneBlock = config.getBoolean("EarthMover Sneak Mine", ToolConfigs + "."
 				+ SpecialAbilitiesEnablement, true, "Enables the player to mine one block while sneaking with the EarthMover");
 		ConfigInfo.EnableHammerShiftOneBlock = config.getBoolean("Hammer Sneak Mine", ToolConfigs + "." + SpecialAbilitiesEnablement, true,
@@ -60,13 +106,6 @@ public class MagToolsConfigMain
 				true, "This enables the damage boost the sword gets from your XPLevels");
 		ConfigInfo.EnablePickFortune = config.getBoolean("Pick Custom Fortune Enabling", ToolConfigs + "." + SpecialAbilitiesEnablement,
 				true, "This enables the XP based extra drop chance");
-		
-		ConfigInfo.EnableSword = config.getBoolean("Enable Mag Sword", ToolConfigs + "." + ToolEnabling, true, "If the Mag Sword is enabled");
-		ConfigInfo.EnablePick = config.getBoolean("Enable Mag Pick", ToolConfigs + "." + ToolEnabling, true, "If the Mag Pick is enabled");
-		ConfigInfo.EnableHammer = config.getBoolean("Enable Mag Hammer", ToolConfigs + "." + ToolEnabling, true, "If the Mag Hammer is enabled");
-		ConfigInfo.EnableEarthMover = config.getBoolean("Enable Mag EarthMover", ToolConfigs + "." + ToolEnabling, true, "If the Mag EarthMover is enabled");
-
-
 		ConfigInfo.EarthMoverSneakMinXP = config.getInt("EarthMover SneakMine XP Requirement",
 				ToolConfigs + "." + SpecialAbilitiesSettings, ConfigInfo.EarthMoverSneakMinXP, 0, 200,
 				"If the EarthMover sneak-mine-oneblock feature is enabled, this is the experience requirement");
@@ -74,6 +113,14 @@ public class MagToolsConfigMain
 				ConfigInfo.EarthMoverSneakMinXP, 0, 200,
 				"If the Hammer sneak-mine-oneblock feature is enabled, this is the experience requirement");
 
-		config.save();
+		// Tool Enabling
+		ConfigInfo.EnableSword = config.getBoolean("Enable Mag Sword", ToolConfigs + "." + ToolEnabling, true,
+				"If the Mag Sword is enabled");
+		ConfigInfo.EnablePick = config.getBoolean("Enable Mag Pick", ToolConfigs + "." + ToolEnabling, true, "If the Mag Pick is enabled");
+		ConfigInfo.EnableHammer = config.getBoolean("Enable Mag Hammer", ToolConfigs + "." + ToolEnabling, true,
+				"If the Mag Hammer is enabled");
+		ConfigInfo.EnableEarthMover = config.getBoolean("Enable Mag EarthMover", ToolConfigs + "." + ToolEnabling, true,
+				"If the Mag EarthMover is enabled");
+
 	}
 }

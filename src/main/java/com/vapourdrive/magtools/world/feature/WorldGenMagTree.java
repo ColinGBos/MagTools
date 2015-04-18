@@ -8,27 +8,34 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import com.vapourdrive.magtools.blocks.MagBlocks;
+import com.vapourdrive.magtools.config.ConfigInfo;
 
 public class WorldGenMagTree extends WorldGenAbstractTree
 {
-	public boolean hasGems;
-	public WorldGenMagTree(boolean doNotify, boolean hasgems)
+	public boolean worldGenTree;
+	public WorldGenMagTree(boolean doNotify, boolean worldgentree)
 	{
 		super(doNotify);
-		hasGems = hasgems;
+		worldGenTree = worldgentree;
 	}
 
 	@Override
 	public boolean generate(World world, Random rand, int x, int y, int z)
 	{
+		boolean hasGems = false;
+		
 		if (checkGenQuality(world, x, y, z) == false)
 		{
 			return false;
 		}
 		else
 		{
-			genBase(world, x, y, z, hasGems);
-			genSecondHalf(world, x, y + 6, z, hasGems);
+			if(!worldGenTree && ConfigInfo.EnableSaplingGem && rand.nextInt(ConfigInfo.SaplingGemChance) == 0)
+			{
+				hasGems = true;
+			}
+			genBase(world, x, y, z, worldGenTree, hasGems);
+			genSecondHalf(world, x, y + 6, z, worldGenTree, hasGems);
 			genBranches(world, x, y + 6, z);
 		}
 		return true;
@@ -45,7 +52,7 @@ public class WorldGenMagTree extends WorldGenAbstractTree
 
 	}
 
-	public void genBase(World world, int x, int y, int z, boolean hasGems)
+	public void genBase(World world, int x, int y, int z, boolean worldGenTree, boolean hasGems)
 	{
 		for (int i = -1; i <= 1; i++)
 		{
@@ -55,11 +62,13 @@ public class WorldGenMagTree extends WorldGenAbstractTree
 				{
 					if (i == 0 && j == 0)
 					{
-						placeGemChance(world, x + i, y + k, z + j, hasGems);
+						placeGemChance(world, x + i, y + k, z + j, worldGenTree, hasGems);
 					}
 
 					else
+					{
 						world.setBlock(x + i, y + k, z + j, MagBlocks.MagLog, 0, 3);
+					}
 
 					if (k == 0)
 					{
@@ -94,7 +103,7 @@ public class WorldGenMagTree extends WorldGenAbstractTree
 		return;
 	}
 
-	public void genSecondHalf(World world, int x, int y, int z, boolean hasGems)
+	public void genSecondHalf(World world, int x, int y, int z, boolean worldGenTree, boolean hasGems)
 	{
 		for (int i = 0; i <= 12; i++)
 		{
@@ -102,7 +111,7 @@ public class WorldGenMagTree extends WorldGenAbstractTree
 			world.setBlock(x - 1, y + i, z, MagBlocks.MagLog, 0, 3);
 			world.setBlock(x, y + i, z + 1, MagBlocks.MagLog, 0, 3);
 			world.setBlock(x, y + i, z - 1, MagBlocks.MagLog, 0, 3);
-			placeGemChance(world, x, y + i, z, hasGems);
+			placeGemChance(world, x, y + i, z, worldGenTree, hasGems);
 		}
 		for (int i = 0; i <= 2; i++)
 		{
@@ -204,10 +213,15 @@ public class WorldGenMagTree extends WorldGenAbstractTree
 		}
 	}
 
-	public void placeGemChance(World world, int x, int y, int z, boolean hasGems)
+	public void placeGemChance(World world, int x, int y, int z, boolean worldGenTree, boolean hasGems)
 	{
 		int meta = 0;
-		if (world.rand.nextInt(4) == 0 && hasGems)
+		if (worldGenTree && world.rand.nextInt(ConfigInfo.WorldGenTreeGemLogChance) == 0)
+		{
+			meta = 1;
+		}
+		
+		if(!worldGenTree && hasGems && world.rand.nextInt(ConfigInfo.SaplingGemChance) == 0)
 		{
 			meta = 1;
 		}
