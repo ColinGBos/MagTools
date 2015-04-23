@@ -232,6 +232,7 @@ public class WorldGenMagTree extends WorldGenAbstractTree
 	public boolean checkLevelGround(World world, int x, int y, int z)
 	{
 		int groundLevelThreshold = 0;
+		int groundCount = 0;
 
 		for (int i = -2; i <= 2; i++)
 		{
@@ -248,10 +249,14 @@ public class WorldGenMagTree extends WorldGenAbstractTree
 				{
 					return false;
 				}
+				if(material == Material.grass || material == Material.ground)
+				{
+					groundCount++;
+				}
 			}
 		}
 
-		if (groundLevelThreshold > 8)
+		if (groundLevelThreshold > 8 || groundCount < 8)
 		{
 			return false;
 		}

@@ -3,8 +3,6 @@ package com.vapourdrive.magtools.blocks;
 import java.util.List;
 import java.util.Random;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -69,10 +67,7 @@ public class MagSapling extends BlockBush implements IGrowable
 	public void growTree(World world, Random random, int x, int y, int z)
 	{
 		Object tree = new WorldGenMagTree(true, false);
-		if (!((WorldGenerator)tree).generate(world, random, x, y, z))
-		{
-			MagTools.log.log(Level.INFO, "Tree did not grow");
-		}
+		((WorldGenerator)tree).generate(world, random, x, y, z);
 	}
 
 	@Override
@@ -114,7 +109,7 @@ public class MagSapling extends BlockBush implements IGrowable
 		}
 		
 		world.setBlockMetadataWithNotify(x, y, z, meta, 3);
-		MagTools.log.log(Level.INFO, "Metadata: " + meta);
+		
 		if (meta >= 15)
 		{
 			growTree(world, random, x, y, z);

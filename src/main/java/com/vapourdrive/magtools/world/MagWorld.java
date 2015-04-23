@@ -34,7 +34,6 @@ public class MagWorld implements IWorldGenerator
 		int chx = xChunk + rand.nextInt(16);
 		int chz = zChunk + rand.nextInt(16);
 
-
 		if (isCorrectWorldConditon(world, chx, chz) && rand.nextInt(ConfigInfo.TreeGenChance) == 0)
 		{
 			int height = world.getHeightValue(chx, chz);
@@ -49,7 +48,7 @@ public class MagWorld implements IWorldGenerator
 		{
 			return false;
 		}
-		
+
 		if (world.getWorldInfo().getTerrainType() == WorldType.FLAT)
 		{
 			if (!ConfigInfo.EnableFlatWorldTree)
@@ -57,15 +56,18 @@ public class MagWorld implements IWorldGenerator
 				return false;
 			}
 		}
-		
-		BiomeGenBase biome = world.getBiomeGenForCoords(x, y);
 
-		if (BiomeDictionary.isBiomeOfType(biome, Type.SAVANNA) || BiomeDictionary.isBiomeOfType(biome, Type.PLAINS)
-				|| BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN) || BiomeDictionary.isBiomeOfType(biome, Type.FOREST))
+		if (world.provider.dimensionId == 0)
 		{
-			return true;
+			BiomeGenBase biome = world.getBiomeGenForCoords(x, y);
+
+			if (BiomeDictionary.isBiomeOfType(biome, Type.SAVANNA) || BiomeDictionary.isBiomeOfType(biome, Type.PLAINS)
+					|| BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN) || BiomeDictionary.isBiomeOfType(biome, Type.FOREST))
+			{
+				return true;
+			}
 		}
-		
+
 		return false;
 	}
 }
