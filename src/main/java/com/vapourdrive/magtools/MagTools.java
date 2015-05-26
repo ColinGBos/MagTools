@@ -12,6 +12,7 @@ import com.vapourdrive.magtools.creativetabs.MagCreativeTab;
 import com.vapourdrive.magtools.events.MagEvents;
 import com.vapourdrive.magtools.world.MagWorld;
 import com.vapourdrive.magtools.items.MagItems;
+import com.vapourdrive.magtools.oredictionary.MagOreDictionary;
 import com.vapourdrive.magtools.proxies.CommonProxy;
 
 import cpw.mods.fml.common.Mod;
@@ -50,13 +51,15 @@ public class MagTools
 	public void Init(FMLInitializationEvent event)
 	{
 		MagItems.registerRecipes();
+		MagBlocks.registerRecipes();
 		new MagWorld();
 		MagEvents.init();
 		new AnvilManager();
+		MagOreDictionary.init();
 	}
 
 	@EventHandler
-	public void iPostInit(FMLPostInitializationEvent event)
+	public void PostInit(FMLPostInitializationEvent event)
 	{
 	}
 }

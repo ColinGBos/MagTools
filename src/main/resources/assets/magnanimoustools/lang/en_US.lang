@@ -25,6 +25,8 @@ item.MagStick.name=Magnanimous Stick
 //Blocks
 tile.MagLog.name=Magnaninous Log
 tile.MagLeaves.name=Magnanimous Leaf
+tile.MagPlank.name=Magnanimous Planks
+tile.MagStairs.name=Magnanimous Stairs
 
 //Phrases
 

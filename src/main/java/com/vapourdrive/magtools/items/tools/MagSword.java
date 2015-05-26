@@ -61,7 +61,6 @@ public class MagSword extends ItemSword
 			double xVelocity = ((entity.posX - player.posX) / (entity.getDistanceToEntity(player) * 2)) + player.motionX;
 			double zVelocity = ((entity.posZ - player.posZ) / (entity.getDistanceToEntity(player) * 2)) + player.motionZ;
 			double yVelocity = entity.motionY;
-			MagTools.log.log(Level.INFO, yVelocity);
 			if (yVelocity < 0.1 && yVelocity > -0.08)
 			{
 				yVelocity = 0.15;
