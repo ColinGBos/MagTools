@@ -1,5 +1,7 @@
 package com.vapourdrive.magtools.blocks;
 
+import com.vapourdrive.magtools.items.blocks.MagItemSlab;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -29,8 +31,8 @@ public class MagBlocks
 		GameRegistry.registerBlock(MagLeaves, MagBlockRef.MagLeaves);
 		GameRegistry.registerBlock(MagPlank, MagBlockRef.MagPlank);
 		GameRegistry.registerBlock(MagStairs, MagBlockRef.MagStairs);
-		//GameRegistry.registerBlock(MagSingleSlab, MagItemSlab.class, MagBlockRef.MagSlab);
-		//GameRegistry.registerBlock(MagDoubleSlab, MagItemSlab.class, MagBlockRef.MagSlabDouble);
+		GameRegistry.registerBlock(MagSingleSlab, MagItemSlab.class, MagBlockRef.MagSlab, MagSingleSlab, MagDoubleSlab);
+		GameRegistry.registerBlock(MagDoubleSlab, MagItemSlab.class, MagBlockRef.MagSlabDouble, MagSingleSlab, MagDoubleSlab);
 	}
 
 	public static void registerRecipes()

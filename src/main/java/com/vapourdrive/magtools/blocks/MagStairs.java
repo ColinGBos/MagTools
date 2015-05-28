@@ -2,8 +2,11 @@ package com.vapourdrive.magtools.blocks;
 
 import com.vapourdrive.magtools.MagTools;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
+import net.minecraft.world.IBlockAccess;
 
 public class MagStairs extends BlockStairs
 {
@@ -29,5 +32,12 @@ public class MagStairs extends BlockStairs
 	{
 		return false;
 	}
+	
+	@Override
+    @SideOnly(Side.CLIENT)
+    public int getMixedBrightnessForBlock(IBlockAccess access, int x, int y, int z)
+    {
+        return MagBlocks.MagPlank.getMixedBrightnessForBlock(access, x, y, z);
+    }
 
 }
