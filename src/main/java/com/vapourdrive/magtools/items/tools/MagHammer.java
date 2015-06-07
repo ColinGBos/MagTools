@@ -5,20 +5,15 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.client.C07PacketPlayerDigging;
-import net.minecraft.network.play.server.S23PacketBlockChange;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
 import com.vapourdrive.magtools.MagTools;
 import com.vapourdrive.magtools.Reference;
@@ -138,7 +133,7 @@ public class MagHammer extends ItemPickaxe
 
 			if (newStrength > 0f && strength / newStrength <= 10f && breakBlock.getMaterial() == material)
 			{
-				breakBlock(world, breakBlock, x, y, z, side, player);
+				RandomUtils.breakBlock(world, breakBlock, x, y, z, side, player);
 
 				if ((double) breakBlock.getBlockHardness(world, x, y, z) != 0.0D)
 				{
@@ -147,93 +142,6 @@ public class MagHammer extends ItemPickaxe
 			}
 		}
 
-	}
-
-	public boolean breakBlock(World world, Block block, int x, int y, int z, int side, EntityPlayer player)
-	{
-		if (world.isAirBlock(x, y, z))
-		{
-			return false;
-		}
-
-		EntityPlayerMP playerMP = null;
-
-		if (player instanceof EntityPlayerMP)
-		{
-			playerMP = (EntityPlayerMP) player;
-		}
-
-		int meta = world.getBlockMetadata(x, y, z);
-		if (block.getHarvestTool(meta) != "pickaxe" || !canHarvestBlock(block, player.getCurrentEquippedItem())
-				|| !ForgeHooks.canHarvestBlock(block, player, meta))
-		{
-			return false;
-		}
-
-		if (playerMP != null)
-		{
-			BreakEvent event = ForgeHooks.onBlockBreakEvent(world, playerMP.theItemInWorldManager.getGameType(), playerMP, x, y, z);
-
-			int drop = event.getExpToDrop();
-			block.dropXpOnBlockBreak(world, x, y, z, drop);
-			world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) | (world.getBlockMetadata(x, y, z) << 12));
-
-			if (event.isCanceled())
-			{
-				return false;
-			}
-		}
-
-		if (player.capabilities.isCreativeMode)
-		{
-			if (!world.isRemote)
-			{
-				block.onBlockHarvested(world, x, y, z, meta, player);
-			}
-
-			if (block.removedByPlayer(world, player, x, y, z, false))
-			{
-				block.onBlockDestroyedByPlayer(world, x, y, z, meta);
-			}
-
-			if (!world.isRemote)
-			{
-				playerMP.playerNetServerHandler.sendPacket(new S23PacketBlockChange(x, y, z, world));
-			}
-			else
-			{
-				Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C07PacketPlayerDigging(2, x, y, z, side));
-			}
-
-			return true;
-		}
-
-		if (!world.isRemote)
-		{
-			block.onBlockHarvested(world, x, y, z, meta, player);
-
-			if (block.removedByPlayer(world, player, x, y, z, true))
-			{
-				block.onBlockDestroyedByPlayer(world, x, y, z, meta);
-				if (!player.capabilities.isCreativeMode)
-				{
-					block.harvestBlock(world, player, x, y, z, meta);
-				}
-			}
-
-			playerMP.playerNetServerHandler.sendPacket(new S23PacketBlockChange(x, y, z, world));
-		}
-
-		else
-		{
-			if (block.removedByPlayer(world, player, x, y, z, true))
-			{
-				block.onBlockDestroyedByPlayer(world, x, y, z, meta);
-			}
-
-			Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C07PacketPlayerDigging(2, x, y, z, side));
-		}
-		return true;
 	}
 
 }

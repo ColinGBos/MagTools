@@ -46,7 +46,10 @@ public class MagBlocks
 				"  #", " ##", "###", '#', MagPlank
 		});
 		GameRegistry.addShapelessRecipe(new ItemStack(MagPlank, 4), new ItemStack(MagLog));
-
+		GameRegistry.addRecipe(new ItemStack(MagSingleSlab, 6), new Object[]
+		{
+				"###", '#', MagPlank
+		});
 	}
 
 }

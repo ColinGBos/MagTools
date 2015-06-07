@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 
 import com.vapourdrive.magtools.config.ConfigInfo;
+import com.vapourdrive.magtools.items.tools.MagAxe;
 import com.vapourdrive.magtools.items.tools.MagEarthMover;
 import com.vapourdrive.magtools.items.tools.MagHammer;
 import com.vapourdrive.magtools.items.tools.MagHatchet;
@@ -43,6 +44,7 @@ public class MagItems
 		MagHammer = new MagHammer(Magnanimous);
 		MagHatchet = new MagHatchet(Magnanimous);
 		MagEarthMover = new MagEarthMover(Magnanimous);
+		MagAxe = new MagAxe(Magnanimous);
 
 		MagHandle = new LogiclessItem(MagItemRef.HardenedHandle, "phrase.magtools.handleinfo", "phrase.magtools.handleinfo2", 64);
 		MagStick = new LogiclessItem(MagItemRef.MagStick, "phrase.magtools.magstickinfo", null, 64);
@@ -79,10 +81,14 @@ public class MagItems
 			GameRegistry.registerItem(MagEarthMover, MagItemRef.MagEarthMover);
 			GameRegistry.registerItem(MagEarthMoverHead, MagItemRef.MagEarthMoverHead);
 		}
+		if(ConfigInfo.EnableAxe)
+		{
+			GameRegistry.registerItem(MagAxe, MagItemRef.MagAxe);
+			GameRegistry.registerItem(MagAxeHead, MagItemRef.MagAxeHead);
+		}
 		// GameRegistry.registerItem(MagHatchet, MagItemRef.MagHatchetName);
 
 		GameRegistry.registerItem(MagHandle, MagItemRef.HardenedHandle);
-		// GameRegistry.registerItem(MagAxeHead, MagItemRef.MagAxeHead);
 		GameRegistry.registerItem(MagGem, MagItemRef.MagGem);
 		GameRegistry.registerItem(MagStick, MagItemRef.MagStick);
 	}

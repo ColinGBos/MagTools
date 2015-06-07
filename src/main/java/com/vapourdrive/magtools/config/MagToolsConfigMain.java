@@ -94,7 +94,9 @@ public class MagToolsConfigMain
 				ConfigInfo.MagDurabilityDefault, 1, 100000, "Set specific durability for the Earth Mover");
 		ConfigInfo.MagSwordDurability = config.getInt("Magnanimous Sword Durability", ToolConfigs + "." + OverrideDurability,
 				ConfigInfo.MagDurabilityDefault, 1, 100000, "Set specific durability for the Sword");
-
+		ConfigInfo.MagAxeDurability = config.getInt("Magnanimous Axe Durability", ToolConfigs + "." + OverrideDurability,
+				ConfigInfo.MagDurabilityDefault, 1, 100000, "Set specific durability for the Axe");
+		
 		// Special Feature Enabling
 		ConfigInfo.EnableEarthMoverShiftOneBlock = config.getBoolean("EarthMover Sneak Mine", ToolConfigs + "."
 				+ SpecialAbilitiesEnablement, true, "Enables the player to mine one block while sneaking with the EarthMover");
@@ -112,6 +114,8 @@ public class MagToolsConfigMain
 		ConfigInfo.HammerSneakMinXP = config.getInt("Hammer SneakMine XP Requirement", ToolConfigs + "." + SpecialAbilitiesSettings,
 				ConfigInfo.EarthMoverSneakMinXP, 0, 200,
 				"If the Hammer sneak-mine-oneblock feature is enabled, this is the experience requirement");
+		ConfigInfo.EnableAxeWholeTree = config.getBoolean("Axe Entire Tree Enabling", ToolConfigs + "." + SpecialAbilitiesEnablement,
+				true, "This enables the axe to cut entire trees");
 
 		// Tool Enabling
 		ConfigInfo.EnableSword = config.getBoolean("Enable Mag Sword", ToolConfigs + "." + ToolEnabling, true,
@@ -121,6 +125,8 @@ public class MagToolsConfigMain
 				"If the Mag Hammer is enabled");
 		ConfigInfo.EnableEarthMover = config.getBoolean("Enable Mag EarthMover", ToolConfigs + "." + ToolEnabling, true,
 				"If the Mag EarthMover is enabled");
+		ConfigInfo.EnableAxe = config.getBoolean("Enable Mag Axe", ToolConfigs + "." + ToolEnabling, true,
+				"If the Mag Axe is enabled");
 
 	}
 }
