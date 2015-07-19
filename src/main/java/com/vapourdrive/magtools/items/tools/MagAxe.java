@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.management.ItemInWorldManager;
 import net.minecraft.world.World;
 
 import org.apache.logging.log4j.Level;
@@ -69,15 +70,16 @@ public class MagAxe extends ItemAxe
 		{
 			for (int j = -1; j <= 1; j++)
 			{
-				if (world.getBlock(x + i, y, z + j).isWood(world, x + i, y, z + j) && count <= 1000)
+				if (world.getBlock(x + i, y, z + j).isWood(world, x + i, y, z + j))
 				{
+					log(world, "X: " + (x + i) + ", Y: " + y + ", Z: " + (z + j));
 					logBreak(world, x + i, y, z + j, player);
 					chainBreak(count + 1, world, x + i, y, z + j, player, blocks);
 				}
 			}
 		}
 
-		if (world.getBlock(x, y + 1, z).isWood(world, x, y + 1, z) && count <= 1000)
+		if (world.getBlock(x, y + 1, z).isWood(world, x, y + 1, z))
 		{
 			logBreak(world, x, y + 1, z, player);
 			chainBreak(count + 1, world, x, y + 1, z, player, blocks);
@@ -93,12 +95,13 @@ public class MagAxe extends ItemAxe
 			if(!player.capabilities.isCreativeMode && stack.getItemDamage() < stack.getMaxDamage())
 			{
 				stack.damageItem(1, player);
-				RandomUtils.breakBlock(world, block, x, y, z, 0, player);
-
+				//RandomUtils.breakBlock(world, block, x, y, z, 0, player);
+				//ItemInWorldManager.
 			}
-			else
+			else if(player.capabilities.isCreativeMode)
 			{
-				RandomUtils.breakBlock(world, block, x, y, z, 0, player);
+				//RandomUtils.breakBlock(world, block, x, y, z, 0, player);
+
 			}
 		}
 	}

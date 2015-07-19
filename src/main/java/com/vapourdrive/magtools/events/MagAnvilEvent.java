@@ -37,7 +37,7 @@ public class MagAnvilEvent
 
 			event.materialCost = matCost;
 			event.cost = xpCost;
-			event.output = Output;
+			event.output = Output.copy();
 		}
 	}
 }
